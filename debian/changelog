@@ -1,0 +1,63 @@
+libjna-java (3.2.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed debian/repack-source.sh to correctly use mktemp.
+  * Make libjna-java Depends on *-headless packages.
+  * Moved package under pkg-java control.
+  * Added debian/README.source to describe quilt.
+  * Added myself as Uploader.
+
+ -- Michael Koch <konqueror@gmx.de>  Mon, 02 Nov 2009 14:14:51 +0100
+
+libjna-java (3.1.0-5) unstable; urgency=low
+
+  * Removing vcs fields.
+  * Removing README.source.
+  * Orphaning package.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 27 Aug 2009 08:47:56 +0200
+
+libjna-java (3.1.0-4) unstable; urgency=low
+
+  * Rediffing nbproject.patch (Closes: #538624).
+  * Updating to standards version 3.8.3.
+  * Adding maintainer homepage field to control.
+  * Marking maintainer homepage field to be also included in binary
+    packages and changelog.
+  * Adding README.source.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 25 Aug 2009 11:41:51 +0200
+
+libjna-java (3.1.0-3) unstable; urgency=low
+
+  * Updating maintainer field.
+  * Updating vcs fields.
+  * Updating, sorting and wrapping depends.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 15 Aug 2009 09:40:19 +0200
+
+libjna-java (3.1.0-2) unstable; urgency=low
+
+  * Removing watch file.
+  * Flipping maintainer and uploaders field.
+  * Upgrading package to standards version 3.8.2.
+  * Updating package sections.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 26 Jul 2009 15:57:25 +0200
+
+libjna-java (3.1.0-1) unstable; urgency=low
+
+  * Updating standards to 3.8.1.
+  * Using correct rfc-2822 date formats in changelog.
+  * Merging upstream version 3.1.0.
+  * Updating version number in rules.
+  * Updating year in copyright file.
+  * Updating rules file to current state of the art.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 09 Jun 2009 11:36:24 +0200
+
+libjna-java (3.0.9-1) unstable; urgency=low
+
+  * Initial release (Closes: #480074).
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 02 Jan 2009 09:41:00 -0500

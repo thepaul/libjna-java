@@ -1,0 +1,3 @@
+01-nbproject.patch
+02-builddir.patch
+03-dynlink-and-cflags.patch

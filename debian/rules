@@ -1,0 +1,67 @@
+#!/usr/bin/make -f
+
+include /usr/share/quilt/quilt.make
+
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+VERSION=3.1.0
+
+clean: clean-patched unpatch
+clean-patched: patch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	ant -f build.xml clean
+	rm -f build.number
+
+	dh_clean
+
+build: build-stamp
+build-stamp: patch
+	dh_testdir
+
+	ant -f build.xml -Dcflags_extra.native="" -Ddynlink.native=true -Dnomixedjar.native=true jar
+	ant -f build.xml javadoc
+
+	touch build-stamp
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+
+	install -D -m 0644 build/jna.jar debian/libjna-java/usr/share/java/jna-$(VERSION).jar
+	ln -s jna-$(VERSION).jar debian/libjna-java/usr/share/java/jna.jar
+
+binary: binary-arch binary-indep
+
+binary-arch: install
+	dh_testdir -a
+	dh_testroot -a
+	dh_installchangelogs -a
+	dh_installdocs -a
+	dh_install -a
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+binary-indep: install
+	dh_testdir -i
+	dh_testroot -i
+	dh_installchangelogs -i
+	dh_installdocs -i
+	dh_install -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+.PHONY: clean build install binary binary-arch binary-indep

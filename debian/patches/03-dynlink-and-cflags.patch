@@ -1,0 +1,42 @@
+Author: Yulia Novozhilova <Yulia.Novozhilova@sun.com>
+Description: dynlink and cflags
+
+diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
+--- libjna-java.orig/build.xml	2008-10-31 06:15:32.000000000 +0000
++++ libjna-java/build.xml	2009-01-02 15:26:40.000000000 +0000
+@@ -358,6 +358,19 @@
+       <arg value="VERSION=${jni.version}"/>
+       <arg value="CHECKSUM=${jni.md5}"/>
+     </exec>
++    <antcall target="native-mixedjar"/>
++    <!-- For web start, native libraries may be provided in the root of -->
++    <!-- an included jar file -->
++    <jar jarfile="${build}/${native.jar}">
++      <fileset dir="${build.native}" includes="jnidispatch.dll,libjnidispatch.*"/>
++      <manifest>
++        <attribute name="Implementation-Version" value="${jni.version} b${jni.build}"/>
++        <attribute name="Specification-Version" value="${jni.version}"/>
++      </manifest>
++    </jar>
++  </target>
++
++  <target name="native-mixedjar" unless="nomixedjar.native">    
+     <mkdir dir="${classes}/com/sun/jna/${os.prefix}"/>
+     <copy todir="${classes}/com/sun/jna/${os.prefix}">
+       <fileset dir="${build.native}"
+@@ -369,15 +382,6 @@
+       <fileset dir="${build.native}"
+                includes="jnidispatch.dll,libjnidispatch.*"/>
+     </copy>
+-    <!-- For web start, native libraries may be provided in the root of -->
+-    <!-- an included jar file -->
+-    <jar jarfile="${build}/${native.jar}">
+-      <fileset dir="${build.native}" includes="jnidispatch.dll,libjnidispatch.*"/>
+-      <manifest>
+-        <attribute name="Implementation-Version" value="${jni.version} b${jni.build}"/>
+-        <attribute name="Specification-Version" value="${jni.version}"/>
+-      </manifest>
+-    </jar>
+   </target>
+ 
+   <target name="compile-tests" depends="compile,native"

@@ -1,0 +1,5 @@
+version=3
+
+https://jna.dev.java.net/source/browse/jna/tags/ ([\d\.]+\d)/ debian debian/repack-source.sh
+
+
