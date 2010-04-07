@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Java maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Michael Koch <konqueror@gmx.de>
 Build-Depends: debhelper (>= 7.0.50~), openjdk-6-jdk, ant,
- ant-optional, libx11-dev, libxt-dev, libffi-dev, pkg-config, quilt
+ ant-optional, libx11-dev, libxt-dev, libffi-dev, pkg-config
 Standards-Version: 3.8.4
 Homepage: http://jna.dev.java.net/
 Vcs-Git: git://git.debian.org/pkg-java/libjna-java.git

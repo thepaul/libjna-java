@@ -1,24 +1,23 @@
 #!/usr/bin/make -f
 
-include /usr/share/quilt/quilt.make
-
 export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 
-VERSION=3.1.0
+VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^-]+).*,\1,p')
 
-clean: clean-patched unpatch
-clean-patched: patch
+clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
 
-	ant -f build.xml clean
+	if [ -f nbproject/profiler-build-impl.xml ]; then \
+		ant -f build.xml clean; \
+	fi
 	rm -f build.number
 
 	dh_clean
 
 build: build-stamp
-build-stamp: patch
+build-stamp:
 	dh_testdir
 
 	ant -f build.xml -Dcflags_extra.native="" -Ddynlink.native=true -Dnomixedjar.native=true jar
