@@ -1,10 +1,9 @@
 Author: Yulia Novozhilova <Yulia.Novozhilova@sun.com>
 Description: dynlink and cflags
 
-diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
---- libjna-java.orig/build.xml	2008-10-31 06:15:32.000000000 +0000
-+++ libjna-java/build.xml	2009-01-02 15:26:40.000000000 +0000
-@@ -358,6 +358,19 @@
+--- a/build.xml
++++ b/build.xml
+@@ -376,6 +376,19 @@
        <arg value="VERSION=${jni.version}"/>
        <arg value="CHECKSUM=${jni.md5}"/>
      </exec>
@@ -24,7 +23,7 @@ diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
      <mkdir dir="${classes}/com/sun/jna/${os.prefix}"/>
      <copy todir="${classes}/com/sun/jna/${os.prefix}">
        <fileset dir="${build.native}"
-@@ -369,15 +382,6 @@
+@@ -387,15 +400,6 @@
        <fileset dir="${build.native}"
                 includes="jnidispatch.dll,libjnidispatch.*"/>
      </copy>
@@ -39,4 +38,4 @@ diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
 -    </jar>
    </target>
  
-   <target name="compile-tests" depends="compile,native"
+   <target name="compile-tests" depends="compile,native,jar"

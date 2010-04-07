@@ -1,12 +1,11 @@
 Author: Yulia Novozhilova <Yulia.Novozhilova@sun.com>
 Description: no special build dir for d64
 
-diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
---- libjna-java.orig/build.xml	2008-10-31 06:15:32.000000000 +0000
-+++ libjna-java/build.xml	2009-01-02 15:21:43.000000000 +0000
-@@ -83,7 +83,7 @@
-         <os arch="amd64"/>
-       </or>
+--- a/build.xml
++++ b/build.xml
+@@ -96,7 +96,7 @@
+         <equals arg1="${vm.arch}" arg2="-d64"/>
+       </and>
      </condition>
 -    <property name="build" value="build${vm.arch}"/>
 +    <property name="build" value="build"/>

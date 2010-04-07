@@ -1,10 +1,9 @@
 Author: Rene Engelhard <rene@debian.org>
 Description: fix build.xml to remove nbproject usage as we don't have it.
 
-diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
---- libjna-java.orig/build.xml	2009-08-14 23:39:32.000000000 +0000
-+++ libjna-java/build.xml	2009-08-15 09:15:11.000000000 +0000
-@@ -58,7 +58,6 @@
+--- a/build.xml
++++ b/build.xml
+@@ -59,7 +59,6 @@
  
    <target name="default" depends="test" description="Build and Test."/>
  
@@ -12,7 +11,7 @@ diff -Naurp libjna-java.orig/build.xml libjna-java/build.xml
    <target name="init" depends="-setup"/>
    <target name="compile-test-single" depends="compile-tests"/>
    <target name="compile-single" depends="compile"/>
-@@ -592,7 +591,6 @@
+@@ -616,7 +615,6 @@
        <zipfileset src="${dist}/src.zip"/>
        <zipfileset dir="lib" includes="junit.jar" prefix="lib"/>
        <zipfileset dir="." includes=".classpath,.project"/>
