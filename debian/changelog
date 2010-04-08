@@ -4,7 +4,7 @@ libjna-java (3.2.3-2) UNRELEASED; urgency=low
   * refresh patches
   * add debian/patches/04-load-native-code-from-fs.patch to try to load
     native library from /usr/lib/jni if system property
-    jna.boot.library.path is not set
+    jna.boot.library.path is not set (Closes: #576879)
   * debian/control:
     - set debhelper dependency to >= 7.0.50~
     - update Standards-Version to 3.8.4 (no changes needed)
