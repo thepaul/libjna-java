@@ -1,4 +1,4 @@
-libjna-java (3.2.3-2) UNRELEASED; urgency=low
+libjna-java (3.2.3-2) unstable; urgency=low
 
   * Team upload.
   * refresh patches
@@ -18,7 +18,7 @@ libjna-java (3.2.3-2) UNRELEASED; urgency=low
   * add myself to Uploaders
   * switch to dh7 rules in debian/rules
 
- -- Jan Dittberner <jandd@debian.org>  Wed, 07 Apr 2010 23:19:17 +0200
+ -- Jan Dittberner <jandd@debian.org>  Thu, 08 Apr 2010 14:51:06 +0200
 
 libjna-java (3.2.3-1) unstable; urgency=low
 
