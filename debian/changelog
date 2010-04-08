@@ -15,6 +15,7 @@ libjna-java (3.2.3-2) UNRELEASED; urgency=low
     - remove patch rules from debian/rules
     - modify clean target to work with unpatched sources too
   * parse version from changelog in debian/rules
+  * add myself to Uploaders
 
  -- Jan Dittberner <jandd@debian.org>  Wed, 07 Apr 2010 23:19:17 +0200
 
