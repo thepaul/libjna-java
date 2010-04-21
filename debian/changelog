@@ -11,7 +11,7 @@ libjna-java (3.2.4-1) unstable; urgency=low
   [ Jan Dittberner ]
   * refresh patches
 
- -- Ludovic Claude <ludovic.claude@laposte.net>  Tue, 20 Apr 2010 23:35:42 +0200
+ -- Jan Dittberner <jandd@debian.org>  Wed, 21 Apr 2010 16:36:37 +0200
 
 libjna-java (3.2.3-2) unstable; urgency=low
 
