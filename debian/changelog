@@ -1,11 +1,15 @@
 libjna-java (3.2.4-1) unstable; urgency=low
 
+  [ Ludovic Claude ]
   * Team upload.
   * New upstream release
   * Added myself as uploader
   * Add Maven metadata
   * debian/control:
      - add dependency on maven-repo-helper
+
+  [ Jan Dittberner ]
+  * refresh patches
 
  -- Ludovic Claude <ludovic.claude@laposte.net>  Tue, 20 Apr 2010 23:35:42 +0200
 
