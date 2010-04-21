@@ -34,7 +34,7 @@
   <!-- JNA library release version -->            
   <property name="jna.major" value="3"/>
   <property name="jna.minor" value="2"/>
-  <property name="jna.revision" value="3"/>
+  <property name="jna.revision" value="4"/>
   <property name="jna.build" value="${build.number}"/>
   <property name="jna.version" value="${jna.major}.${jna.minor}.${jna.revision}"/>
   <!-- jnidispatch library release version -->
@@ -275,6 +275,7 @@
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/win32-amd64.jar" overwrite="true"/>
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/linux-i386.jar" overwrite="true"/>
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/linux-amd64.jar" overwrite="true"/>
+    <copy file="${dist}/out-of-date.jar" tofile="${dist}/linux-ia64.jar" overwrite="true"/>
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/freebsd-i386.jar" overwrite="true"/>
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/freebsd-amd64.jar" overwrite="true"/>
     <copy file="${dist}/out-of-date.jar" tofile="${dist}/openbsd-i386.jar" overwrite="true"/>
@@ -570,6 +571,9 @@
       <zipfileset src="${dist}/linux-amd64.jar" 
                   includes="*jnidispatch*"
                   prefix="com/sun/jna/linux-amd64"/>
+      <zipfileset src="${dist}/linux-ia64.jar" 
+                  includes="*jnidispatch*"
+                  prefix="com/sun/jna/linux-ia64"/>
       <zipfileset src="${dist}/sunos-x86.jar" 
                   includes="*jnidispatch*"
                   prefix="com/sun/jna/sunos-x86"/>
@@ -604,7 +608,7 @@
     <zip zipfile="${dist}/doc.zip">
       <zipfileset dir="${javadoc}" prefix="javadoc"/>
     </zip>
-    <!-- JNA sources only, for use in Linux build from source -->
+    <!-- JNA sources only, for use in Linux build from source/shared libffi -->
     <zip zipfile="${dist}/src.zip">
       <zipfileset dir="." includes="build.xml,LICENSE.txt"/>
       <zipfileset dir="${src}" includes="**/*.java" prefix="src"/>
@@ -614,7 +618,7 @@
     <!-- Full sources required to build and test everything -->
     <zip zipfile="${dist}/src-full.zip">
       <zipfileset src="${dist}/src.zip"/>
-      <zipfileset dir="lib" includes="junit.jar" prefix="lib"/>
+      <zipfileset dir="lib" includes="junit.jar,clover.jar" prefix="lib"/>
       <zipfileset dir="." includes=".classpath,.project"/>
       <zipfileset dir="nbproject" includes="**/*" prefix="nbproject"/>
       <zipfileset dir="${native}" includes="libffi,libffi/**/*" prefix="native"/>
