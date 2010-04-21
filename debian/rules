@@ -17,9 +17,8 @@ override_dh_auto_build:
 	ant -f build.xml javadoc
 
 override_dh_auto_install:
-	install -D -m 0644 build/jna.jar debian/libjna-java/usr/share/java/jna-$(VERSION).jar
-	if [ -L debian/libjna-java/usr/share/java/jna.jar ]; then rm debian/libjna-java/usr/share/java/jna.jar; fi
-	ln -s jna-$(VERSION).jar debian/libjna-java/usr/share/java/jna.jar
+	mh_installpoms -plibjna-java
+	mh_installjar -plibjna-java -l --usj-name=jna pom.xml build/jna.jar
 
 override_dh_makeshlibs:
 	# don't call dh_makeshlibs

@@ -19,6 +19,7 @@ mkdir ${BASEDIR}
 # svn export https://jna.dev.java.net/svn/jna/tags/${VERSION}/jnalib/ --username guest ${BASEDIR}
 wget --user guest --password "" \
       --directory-prefix=${TMPDIR} \
+      https://jna.dev.java.net/svn/jna/tags/${VERSION}/jnalib/pom.xml \
       https://jna.dev.java.net/svn/jna/tags/${VERSION}/jnalib/dist/src.zip \
       https://jna.dev.java.net/svn/jna/tags/${VERSION}/jnalib/src/com/sun/jna/overview.html \
       https://jna.dev.java.net/svn/jna/tags/${VERSION}/jnalib/src/com/sun/jna/package.html
@@ -33,6 +34,7 @@ rm -rf ${BASEDIR}/native/libffi
 
 # files missing in src.zip
 mv ${TMPDIR}/*html ${BASEDIR}/src/com/sun/jna/
+mv ${TMPDIR}/*xml ${BASEDIR}/
 
 # Repack
 GZIP=-9 tar -C "$TMPDIR" -czf ../libjna-java_${VERSION}.orig.tar.gz "libjna-java-${VERSION}"
