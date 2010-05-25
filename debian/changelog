@@ -5,6 +5,8 @@ libjna-java (3.2.4-2) UNRELEASED; urgency=low
   * add debian/patches/05-support-gnu-kfreebsd.patch to support
     GNU/kFreeBSD architectures
   * debian/rules: add -Djni.md5="" to ant call
+  * import debian/patches/50-remove-gjdoc-inexistent-options.dpatch as
+    debian/patches/06-remove-gjdoc-inexistent-options.patch
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 02 May 2010 10:44:35 +0200
 

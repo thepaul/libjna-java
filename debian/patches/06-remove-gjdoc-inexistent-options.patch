@@ -1,0 +1,13 @@
+Author: Jan Dittberner <jandd@debian.org>
+Subject: disable javadoc options that are not supported by gjdoc
+
+--- a/build.xml
++++ b/build.xml
+@@ -546,7 +546,6 @@
+       <group title="Unix Examples" packages="com.sun.jna.examples.unix"/>
+       <group title="Windows Examples" packages="com.sun.jna.examples.win32"/>
+ 
+-      <arg value="-notimestamp"/>
+     </javadoc>
+   </target>
+ 
