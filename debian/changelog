@@ -1,5 +1,6 @@
-libjna-java (3.2.4-2) UNRELEASED; urgency=low
+libjna-java (3.2.4-2) unstable; urgency=low
 
+  * make libjna-java buildable on GNU/kFreeBSD
   * debian/control: set Build-Depends to default-jdk | openjdk-6-jdk
   * set JAVA_HOME to /usr/lib/jvm/default-java
   * add debian/patches/05-support-gnu-kfreebsd.patch to support
@@ -8,7 +9,7 @@ libjna-java (3.2.4-2) UNRELEASED; urgency=low
   * import debian/patches/50-remove-gjdoc-inexistent-options.dpatch as
     debian/patches/06-remove-gjdoc-inexistent-options.patch
 
- -- Jan Dittberner <jandd@debian.org>  Sun, 02 May 2010 10:44:35 +0200
+ -- Jan Dittberner <jandd@debian.org>  Wed, 26 May 2010 00:14:07 +0200
 
 libjna-java (3.2.4-1) unstable; urgency=low
 
