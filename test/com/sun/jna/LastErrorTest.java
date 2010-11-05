@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 
 import junit.framework.TestCase;
 
+@SuppressWarnings("unused")
 public class LastErrorTest extends TestCase {
     
     private static final Map OPTIONS = new HashMap() {{
@@ -57,7 +58,7 @@ public class LastErrorTest extends TestCase {
             fail("Method should throw LastErrorException");
         }
         catch(LastErrorException e) {
-            assertEquals("Exception should contain error code", ERROR, e.errorCode);
+            assertEquals("Exception should contain error code", ERROR, e.getErrorCode());
         }
     }
 
@@ -72,7 +73,7 @@ public class LastErrorTest extends TestCase {
             fail("Method should throw LastErrorException");
         }
         catch(LastErrorException e) {
-            assertEquals("Exception should contain error code", ERROR, e.errorCode);
+            assertEquals("Exception should contain error code", ERROR, e.getErrorCode());
         }
     }
 

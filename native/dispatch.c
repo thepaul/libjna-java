@@ -2268,10 +2268,10 @@ Java_com_sun_jna_Native_setLastError(JNIEnv *env, jclass classp, jint code) {
 
 JNIEXPORT jstring JNICALL
 Java_com_sun_jna_Native_getNativeVersion(JNIEnv *env, jclass classp) {
-#ifndef VERSION
-#define VERSION "undefined"
+#ifndef JNA_JNI_VERSION
+#define JNA_JNI_VERSION "undefined"
 #endif
-  return newJavaString(env, VERSION, JNI_FALSE);
+  return newJavaString(env, JNA_JNI_VERSION, JNI_FALSE);
 }
 
 JNIEXPORT jstring JNICALL
@@ -2808,7 +2808,9 @@ Java_com_sun_jna_Native_unregister(JNIEnv *env, jclass ncls, jclass cls, jlongAr
     free(md);
   }
   (*env)->ReleaseLongArrayElements(env, handles, data, 0);
-  (*env)->UnregisterNatives(env, cls);
+  // Not required, or recommended (see description in JNI docs,
+  // http://java.sun.com/j2se/1.4.2/docs/guide/jni/spec/functions.html
+  //(*env)->UnregisterNatives(env, cls);
 }
 
 JNIEXPORT jlong JNICALL

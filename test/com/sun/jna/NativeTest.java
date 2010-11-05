@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Properties;
 import junit.framework.TestCase;
 
+@SuppressWarnings("unused")
 public class NativeTest extends TestCase {
     
     public void testDefaultStringEncoding() throws Exception {
@@ -290,6 +291,13 @@ public class NativeTest extends TestCase {
         assertEquals("Wrong type mapper for callback class",
                      TestCallback.TYPE_MAPPER,
                      Native.getTypeMapper(TestCallback.class));
+    }
+
+    public void testStringReplace() {
+        assertEquals("Bad replace", "abcdefg", Native.replace("z", "a", "zbcdefg"));
+        assertEquals("Bad replace", "abcdefg", Native.replace("z", "g", "abcdefz"));
+        assertEquals("Bad replace", "abcdefg", Native.replace("z", "d", "abczefg"));
+        assertEquals("Bad replace", "abcaefa", Native.replace("z", "a", "zbczefz"));
     }
 
     public static void main(String[] args) {
