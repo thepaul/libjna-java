@@ -28,6 +28,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
+import java.net.URI;
 import java.net.URL;
 import java.net.URISyntaxException;
 import java.nio.Buffer;
@@ -71,7 +72,7 @@ import com.sun.jna.Structure.FFIType;
  */
 public final class Native {
 
-    private static final String VERSION = "3.2.4";
+    private static final String VERSION = "3.2.7";
 
     private static String nativeLibraryPath = null;
     private static boolean unpacked;
@@ -145,6 +146,9 @@ public final class Native {
         }
         // Reach into the bowels of ClassLoader to force the native
         // library to unload
+        // NOTE: this may cause a failure when freeing com.sun.jna.Memory
+        // after the library has been unloaded, see
+        // https://jna.dev.java.net/issues/show_bug.cgi?id=157
         try {
             ClassLoader cl = Native.class.getClassLoader();
             Field f = ClassLoader.class.getDeclaredField("nativeLibraries");
@@ -155,7 +159,8 @@ public final class Native {
                 f = lib.getClass().getDeclaredField("name");
                 f.setAccessible(true);
                 String name = (String)f.get(lib);
-                if (name.equals(path) || name.indexOf(path) != -1) {
+                if (name.equals(path) || name.indexOf(path) != -1
+                    || name.equals(flib.getCanonicalPath())) {
                     Method m = lib.getClass().getDeclaredMethod("finalize", new Class[0]);
                     m.setAccessible(true);
                     m.invoke(lib, new Object[0]);
@@ -707,7 +712,7 @@ public final class Native {
         File lib = null;
         if (url.getProtocol().toLowerCase().equals("file")) {
             try {
-                lib = new File(url.toURI());
+                lib = new File(new URI(url.toString()));
             }
             catch(URISyntaxException e) {
                 lib = new File(url.getPath());
@@ -1108,7 +1113,25 @@ public final class Native {
             if (cls == float.class) return "F";
             if (cls == double.class) return "D";
         }
-        return "L" + cls.getName().replace(".", "/") + ";";
+        return "L" + replace(".", "/", cls.getName()) + ";";
+    }
+
+    // No String.replace available in 1.4 
+    static String replace(String s1, String s2, String str) {
+        StringBuffer buf = new StringBuffer();
+        while (true) {
+            int idx = str.indexOf(s1);
+            if (idx == -1) {
+                buf.append(str);
+                break;
+            }
+            else {
+                buf.append(str.substring(0, idx));
+                buf.append(s2);
+                str = str.substring(idx + s1.length());
+            }
+        }
+        return buf.toString();
     }
 
     private static final int CVT_UNSUPPORTED = -1;
