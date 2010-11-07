@@ -1,3 +1,10 @@
+libjna-java (3.2.7-0~nmu.1) UNRELEASED; urgency=low
+
+  * Non-maintainer upload.
+  * New upstream release
+
+ -- paul cannon <pik@debian.org>  Sat, 06 Nov 2010 19:11:58 -0500
+
 libjna-java (3.2.4-2) unstable; urgency=low
 
   * make libjna-java buildable on GNU/kFreeBSD
