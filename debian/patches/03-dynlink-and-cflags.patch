@@ -3,8 +3,8 @@ Description: dynlink and cflags
 
 --- a/build.xml
 +++ b/build.xml
-@@ -377,6 +377,19 @@
-       <arg value="VERSION=${jni.version}"/>
+@@ -393,6 +393,19 @@
+       <arg value="JNA_JNI_VERSION=${jni.version}"/>
        <arg value="CHECKSUM=${jni.md5}"/>
      </exec>
 +    <antcall target="native-mixedjar"/>
@@ -23,7 +23,7 @@ Description: dynlink and cflags
      <mkdir dir="${classes}/com/sun/jna/${os.prefix}"/>
      <copy todir="${classes}/com/sun/jna/${os.prefix}">
        <fileset dir="${build.native}"
-@@ -388,15 +401,6 @@
+@@ -404,15 +417,6 @@
        <fileset dir="${build.native}"
                 includes="jnidispatch.dll,libjnidispatch.*"/>
      </copy>
@@ -38,4 +38,4 @@ Description: dynlink and cflags
 -    </jar>
    </target>
  
-   <target name="compile-tests" depends="compile,native,jar"
+   <target name="compile-tests" depends="compile,native,jar" 
