@@ -1,6 +1,11 @@
 #!/usr/bin/make -f
 
-export JAVA_HOME=/usr/lib/jvm/default-java
+JVMS = default-java java-6-openjdk java-6-sun
+export JAVA_HOME=$(firstword $(wildcard $(foreach jvm,$(JVMS),/usr/lib/jvm/$(jvm))))
+
+ifeq ($(JAVA_HOME),)
+$(error No candidate JVM found)
+endif
 
 VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^-]+).*,\1,p')
 

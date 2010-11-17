@@ -3,7 +3,7 @@ Section: java
 Priority: optional
 Maintainer: Debian Java maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Michael Koch <konqueror@gmx.de>, Jan Dittberner <jandd@debian.org>, Ludovic Claude <ludovic.claude@laposte.net>
-Build-Depends: debhelper (>= 7.0.50~), default-jdk | openjdk-6-jdk, ant,
+Build-Depends: debhelper (>= 7.0.50~), default-jdk (>= 1:1.6) | openjdk-6-jdk, ant,
  ant-optional, libx11-dev, libxt-dev, libffi-dev, pkg-config, maven-repo-helper
 Standards-Version: 3.8.4
 Homepage: http://jna.dev.java.net/
