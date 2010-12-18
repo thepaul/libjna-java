@@ -31,4 +31,4 @@ override_dh_makeshlibs:
 binary: binary-arch binary-indep
 
 %:
-	dh $@
+	dh $@ --with quilt
